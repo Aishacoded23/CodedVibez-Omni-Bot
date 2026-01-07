@@ -1,0 +1,15 @@
+name: CodedVibez Auto-Pilot
+on:
+  push:
+  workflow_dispatch:
+jobs:
+  run-ai:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install AI Tools
+        run: pip install google-generativeai
+      - name: Run Sy Gold Bot
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: python bot.py
